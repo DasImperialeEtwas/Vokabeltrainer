@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Vokabeltrainer</string>
+    <string name="anweisung">Wähle die richtige Antwort aus:</string>
+    <string name="file">Neue Datei einlesen</string>
+    <string name="start_button">Mit dem Lernen beginnen!</string>
+    <string name="about_menu">About</string>
+    <string name="version">Version: %s</string>
+    <string name="about_text">Der "Vocabeltrainer" ist eine simple App zum leichten erlernen von Vokabeln durch stetige Wiederholung. Sie wurde so erstellt, das sie benutzerfreundlich, intuitiv und leicht zu benutzen ist. </string>
+</resources>
