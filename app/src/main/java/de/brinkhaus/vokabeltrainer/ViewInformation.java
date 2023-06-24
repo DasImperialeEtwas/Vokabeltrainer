@@ -70,6 +70,12 @@ public class ViewInformation extends AppCompatActivity {
     }
 
     public void checkForWinner(View view, Button btn){
+        //Dissable Buttons
+        eins.setEnabled(false);
+        zwei.setEnabled(false);
+        drei.setEnabled(false);
+        vier.setEnabled(false);
+
         //Wenn es Richtig ist
         if (btn.getText().equals(question[language])){
             btn.setBackgroundColor(Color.argb(255,0,255,0));
@@ -164,5 +170,11 @@ public class ViewInformation extends AppCompatActivity {
         if(language == 0)
             vocabel.setText(question[1]);
         else vocabel.setText(question[0]);
+
+        //Enable Buttons
+        eins.setEnabled(true);
+        zwei.setEnabled(true);
+        drei.setEnabled(true);
+        vier.setEnabled(true);
     }
 }
