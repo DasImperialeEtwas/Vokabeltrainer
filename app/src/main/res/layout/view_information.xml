@@ -72,7 +72,8 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:onClick="btn2"
-            android:text="Button" />
+            android:text="Button"
+            android:textColorHighlight="@color/teal_700" />
 
     </LinearLayout>
 

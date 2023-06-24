@@ -65,7 +65,6 @@ public class ViewInformation extends AppCompatActivity {
 
         vocabel = (TextView) findViewById(R.id.vocabel);
         anweisung = (TextView) findViewById(R.id.anweisung);
-
         chooseWord();
     }
 
@@ -99,6 +98,13 @@ public class ViewInformation extends AppCompatActivity {
                 vier.setBackgroundColor(Color.argb(255,0,255,0));
             }
         }
+
+        //Restore Changes
+        allVocabs.add(wrongAnswers[0]);
+        allVocabs.add(wrongAnswers[0]);
+        allVocabs.add(wrongAnswers[0]);
+        allVocabs.add(question[0]+";"+question[1]+";"+question[2]);
+        Log.i("Vocab","Restore Done");
     }
 
     public void btn1(View view){
@@ -173,8 +179,12 @@ public class ViewInformation extends AppCompatActivity {
 
         //Enable Buttons
         eins.setEnabled(true);
+        eins.setHighlightColor(Color.argb(100,1,135,134));
         zwei.setEnabled(true);
+        zwei.setHighlightColor(Color.argb(100,1,135,134));
         drei.setEnabled(true);
+        drei.setHighlightColor(Color.argb(100,1,135,134));
         vier.setEnabled(true);
+        vier.setHighlightColor(Color.argb(100,1,135,134));
     }
 }
