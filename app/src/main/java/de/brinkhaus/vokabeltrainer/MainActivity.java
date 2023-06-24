@@ -23,12 +23,6 @@ import java.util.Scanner;
  */
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> allVocabs = new ArrayList<>();
-    ArrayList<String> box_1 = new ArrayList<>();
-    ArrayList<String> box_2 = new ArrayList<>();
-    ArrayList<String> box_3 = new ArrayList<>();
-    ArrayList<String> box_4 = new ArrayList<>();
-    ArrayList<String> box_5 = new ArrayList<>();
-    ArrayList<String> box_6 = new ArrayList<>();
 
     /**
      * This method is called when the activity is first created.
@@ -55,12 +49,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent a = new Intent(MainActivity.this, ViewInformation.class);
                 a.putExtra("allVocabs",allVocabs);
-                a.putExtra("Lernbox 1",box_1);
-                a.putExtra("Lernbox 2",box_2);
-                a.putExtra("Lernbox 3",box_3);
-                a.putExtra("Lernbox 4",box_4);
-                a.putExtra("Lernbox 5",box_5);
-                a.putExtra("Lernbox 6",box_6);
                 startActivity(a);
             }
         });
@@ -73,12 +61,6 @@ public class MainActivity extends AppCompatActivity {
     private void setupVocabs(){
         File datadirectory = Environment.getExternalStoragePublicDirectory("/VocTrainer/");
         File datafile = new File(datadirectory, "vocabulary.csv");
-        File lernbox_1 = new File(datadirectory, "box_1.csv");
-        File lernbox_2 = new File(datadirectory, "box_2.csv");
-        File lernbox_3 = new File(datadirectory, "box_3.csv");
-        File lernbox_4 = new File(datadirectory, "box_4.csv");
-        File lernbox_5 = new File(datadirectory, "box_5.csv");
-        File lernbox_6 = new File(datadirectory, "box_6.csv");
         Log.i("Vocabeltrainer: " , datafile.getAbsolutePath());
 
         if (datafile.exists()){
@@ -91,55 +73,6 @@ public class MainActivity extends AppCompatActivity {
                 while(scanner.hasNextLine()){
                     allVocabs.add(scanner.nextLine());
                 }
-
-                //Lernbox_1
-                fileInputStream = new FileInputStream(lernbox_1);
-                scanner = new Scanner(fileInputStream);
-
-                while(scanner.hasNextLine()){
-                    box_1.add(scanner.nextLine());
-                }
-
-                //Lernbox_2
-                fileInputStream = new FileInputStream(lernbox_2);
-                scanner = new Scanner(fileInputStream);
-
-                while(scanner.hasNextLine()){
-                    box_2.add(scanner.nextLine());
-                }
-
-                //Lernbox_3
-                fileInputStream = new FileInputStream(lernbox_3);
-                scanner = new Scanner(fileInputStream);
-
-                while(scanner.hasNextLine()){
-                    box_3.add(scanner.nextLine());
-                }
-
-                //Lernbox_4
-                fileInputStream = new FileInputStream(lernbox_4);
-                scanner = new Scanner(fileInputStream);
-
-                while(scanner.hasNextLine()){
-                    box_4.add(scanner.nextLine());
-                }
-
-                //Lernbox_5
-                fileInputStream = new FileInputStream(lernbox_5);
-                scanner = new Scanner(fileInputStream);
-
-                while(scanner.hasNextLine()){
-                    box_5.add(scanner.nextLine());
-                }
-
-                //Lernbox_6
-                fileInputStream = new FileInputStream(lernbox_6);
-                scanner = new Scanner(fileInputStream);
-
-                while(scanner.hasNextLine()){
-                    box_6.add(scanner.nextLine());
-                }
-
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -149,16 +82,11 @@ public class MainActivity extends AppCompatActivity {
             try {
                 datadirectory.mkdir();
                 datafile.createNewFile();
-                lernbox_1.createNewFile();
-                lernbox_2.createNewFile();
-                lernbox_3.createNewFile();
-                lernbox_4.createNewFile();
-                lernbox_5.createNewFile();
-                lernbox_6.createNewFile();
+
 
                 //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Environment.openFileOutput(datafile));
                 FileOutputStream fileOutputStream = new FileOutputStream(datafile);
-                fileOutputStream.write("1;Hello\n2;du\n3;Mensch\n4;zug".getBytes());
+                fileOutputStream.write("W1;Hello;0\nW2;du;0\nW3;Mensch;0\nW4;zug;0".getBytes());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

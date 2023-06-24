@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_weight="1"
-            android:onClick="viewInformation"
+            android:onClick="btn1"
             android:text="test" />
 
         <Button
@@ -71,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_weight="1"
+            android:onClick="btn2"
             android:text="Button" />
 
     </LinearLayout>
@@ -90,6 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_weight="1"
+            android:onClick="btn3"
             android:text="Button" />
 
         <Button
@@ -98,6 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_weight="1"
+            android:onClick="btn4"
             android:text="Button" />
     </LinearLayout>
 
