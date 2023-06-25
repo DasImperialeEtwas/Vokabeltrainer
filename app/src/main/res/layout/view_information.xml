@@ -23,11 +23,18 @@
         android:id="@+id/vocabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginBottom="130dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginBottom="128dp"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/anweisung"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <TextView
         android:id="@+id/anweisung"
@@ -63,7 +70,14 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:onClick="btn1"
-            android:text="test" />
+            android:text="test"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            app:cornerRadius="10dp"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="192dp"
+            tools:layout_editor_absoluteX="5dp"
+            tools:layout_editor_absoluteY="394dp" />
 
         <Button
             android:id="@+id/answer_2"
@@ -73,7 +87,13 @@
             android:layout_weight="1"
             android:onClick="btn2"
             android:text="Button"
-            android:textColorHighlight="@color/teal_700" />
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            app:cornerRadius="10dp"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="199dp"
+            tools:layout_editor_absoluteX="207dp"
+            tools:layout_editor_absoluteY="394dp" />
 
     </LinearLayout>
 
@@ -93,7 +113,10 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:onClick="btn3"
-            android:text="Button" />
+            android:text="Button"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/answer_4"
@@ -102,7 +125,25 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:onClick="btn4"
-            android:text="Button" />
+            android:text="Button"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            app:cornerRadius="10dp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="147dp"
+        android:backgroundTint="#4C70AF"
+        android:onClick="nextWord"
+        android:text="@string/next_button"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,6 @@
     <string name="about_menu">About</string>
     <string name="version">Version: %s</string>
     <string name="about_text">Der "Vocabeltrainer" ist eine simple App zum leichten erlernen von Vokabeln durch stetige Wiederholung. Sie wurde so erstellt, das sie benutzerfreundlich, intuitiv und leicht zu benutzen ist. </string>
+    <string name="next_button">next</string>
+    <string name="auswertung">Auswertung der Lernsession:</string>
 </resources>

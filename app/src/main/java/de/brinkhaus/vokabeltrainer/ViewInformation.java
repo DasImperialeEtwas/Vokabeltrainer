@@ -4,15 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Intent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toolbar;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -29,98 +31,131 @@ public class ViewInformation extends AppCompatActivity {
      * Before API 23 permission request is asked by the user during installation of app
      * After API 23 permission request is asked at runtime
      * */
-    private int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-    private int counter = 20;
+    private int counter = 3;
+    private int numOfRounds = 0;
+    private int correct = 0;
+    private int incorrect = 0;
     private ArrayList<String> allVocabs;
-
     int language;
     String[] question;
     String[] wrongAnswers;
-
-
-    Button eins;
-    Button zwei;
-    Button drei;
-    Button vier;
-
-
-    TextView vocabel;
-    TextView anweisung;
+    Button one;
+    Button two;
+    Button three;
+    Button four;
+    TextView vocable;
+    TextView instruction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_information);
 
+        /*
+         * Variables arrive in ViewInformation
+         * Buttons get declared
+         * other variables get declared
+         */
+
         Intent a = getIntent();
-
         allVocabs = a.getExtras().getStringArrayList("allVocabs");
-
         Log.i("Vocabs",String.valueOf(allVocabs.size()));
 
-        eins = (Button) findViewById(R.id.answer_1);
-        zwei = (Button) findViewById(R.id.answer_2);
-        drei = (Button) findViewById(R.id.answer_3);
-        vier = (Button) findViewById(R.id.answer_4);
+        one = (Button) findViewById(R.id.answer_1);
+        two = (Button) findViewById(R.id.answer_2);
+        three = (Button) findViewById(R.id.answer_3);
+        four = (Button) findViewById(R.id.answer_4);
 
-        vocabel = (TextView) findViewById(R.id.vocabel);
-        anweisung = (TextView) findViewById(R.id.anweisung);
+        vocable = (TextView) findViewById(R.id.vocabel);
+        instruction = (TextView) findViewById(R.id.anweisung);
         chooseWord();
     }
 
+    /**
+     * This method figure out which button holds the correct answer
+     * Buttons get disabled to ensure that the answer can´t be changed
+     */
     public void checkForWinner(View view, Button btn){
-        //Dissable Buttons
-        eins.setEnabled(false);
-        zwei.setEnabled(false);
-        drei.setEnabled(false);
-        vier.setEnabled(false);
+        one.setClickable(false);
+        two.setClickable(false);
+        three.setClickable(false);
+        four.setClickable(false);
 
-        //Wenn es Richtig ist
+        Button next = findViewById(R.id.next_button);
+        next.setVisibility(Button.VISIBLE);
+
+        /**
+         * This if-loop checks if the correct answer was choosen
+         * Buttons change color to "green" if the answer is correct
+         * Buttons change color to "red" if the answer is wrong
+         */
         if (btn.getText().equals(question[language])){
-            btn.setBackgroundColor(Color.argb(255,0,255,0));
+            //True
+            btn.setBackgroundColor(Color.argb(100,0,255,0));
             question[2] = String.valueOf(Integer.parseInt(question[2]) +1);
-        }else{
-            //Wenn es Falsch ist
+            correct++;
+        }
+        else{
+            //Wrong
             question[2] = "0";
-            btn.setBackgroundColor(Color.argb(255,255,0,0));
+            btn.setBackgroundColor(Color.argb(100,255,0,0));
+            incorrect++;
 
-            if(eins.getText().equals(question[language])){
-                eins.setBackgroundColor(Color.argb(255,0,255,0));
+            if(one.getText().equals(question[language])){
+                one.setBackgroundColor(Color.argb(100,0,255,0));
+                //one.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
             }
-            if(zwei.getText().equals(question[language])){
-                zwei.setBackgroundColor(Color.argb(255,0,255,0));
+            if(two.getText().equals(question[language])){
+                two.setBackgroundColor(Color.argb(100,0,255,0));
+                //two.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
             }
-            if(drei.getText().equals(question[language])){
-                drei.setBackgroundColor(Color.argb(255,0,255,0));
+            if(three.getText().equals(question[language])){
+                four.setBackgroundColor(Color.argb(100,0,255,0));
+                //three.setBackgroundColor(Color.argb(100,255,0,0));
+                //three.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
             }
 
-            if(vier.getText().equals(question[language])){
-                vier.setBackgroundColor(Color.argb(255,0,255,0));
+            if(four.getText().equals(question[language])){
+                four.setBackgroundColor(Color.argb(100,0,255,0));
+                //four.setBackgroundColor(Color.argb(100,255,0,0));
+                //four.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
             }
         }
 
         //Restore Changes
-        allVocabs.add(wrongAnswers[0]);
-        allVocabs.add(wrongAnswers[0]);
-        allVocabs.add(wrongAnswers[0]);
-        allVocabs.add(question[0]+";"+question[1]+";"+question[2]);
+
         Log.i("Vocab","Restore Done");
     }
 
+    /**
+     * Those methods ???????????
+     */
     public void btn1(View view){
-        checkForWinner(view,eins);
+        checkForWinner(view, one);
     }
     public void btn2(View view){
-        checkForWinner(view,zwei);
+        checkForWinner(view, two);
     }
     public void btn3(View view){
-        checkForWinner(view,drei);
+        checkForWinner(view, three);
     }
     public void btn4(View view){
-        checkForWinner(view,vier);
+        checkForWinner(view, four);
     }
 
+
+    /**
+     * This method creates the
+     * @language gets assigned to language1 or language2 (different languages in each row)
+     * @question splits the arraylist @allVocabs into language1, language2 and category
+     * the if-loop ??????????
+     * @wrongAnswers ??????????
+     */
     public void chooseWord(){
+        Button next = findViewById(R.id.next_button);
+        next.setVisibility(Button.INVISIBLE);
+
+
         Random random = new Random();
         language = random.nextInt(2);
 
@@ -144,47 +179,125 @@ public class ViewInformation extends AppCompatActivity {
 
 
         Log.i("Vocab","hui");
-
         int correctButton = random.nextInt(4);
+        /**
+         * The switch method declares which button holds the correct answer
+         */
 
         switch (correctButton){
             case 0:
-                eins.setText(question[language]); //Richtige Lösung
-                zwei.setText(wrongAnswers[0].split(";")[language]);
-                drei.setText(wrongAnswers[1].split(";")[language]);
-                vier.setText(wrongAnswers[2].split(";")[language]);
+                one.setText(question[language]); //Richtige Lösung
+                two.setText(wrongAnswers[0].split(";")[language]);
+                three.setText(wrongAnswers[1].split(";")[language]);
+                four.setText(wrongAnswers[2].split(";")[language]);
                 break;
             case 1:
-                eins.setText(wrongAnswers[0].split(";")[language]);
-                zwei.setText(question[language]); //Richtige Lösung
-                drei.setText(wrongAnswers[1].split(";")[language]);
-                vier.setText(wrongAnswers[2].split(";")[language]);
+                one.setText(wrongAnswers[0].split(";")[language]);
+                two.setText(question[language]); //Richtige Lösung
+                three.setText(wrongAnswers[1].split(";")[language]);
+                four.setText(wrongAnswers[2].split(";")[language]);
                 break;
             case 2:
-                eins.setText(wrongAnswers[0].split(";")[language]);
-                zwei.setText(wrongAnswers[1].split(";")[language]);
-                drei.setText(question[language]); //Richtige Lösung
-                vier.setText(wrongAnswers[2].split(";")[language]);
+                one.setText(wrongAnswers[0].split(";")[language]);
+                two.setText(wrongAnswers[1].split(";")[language]);
+                three.setText(question[language]); //Richtige Lösung
+                four.setText(wrongAnswers[2].split(";")[language]);
                 break;
             case 3:
-                eins.setText(wrongAnswers[0].split(";")[language]);
-                zwei.setText(wrongAnswers[1].split(";")[language]);
-                drei.setText(wrongAnswers[2].split(";")[language]);
-                vier.setText(question[language]); //Richtige Lösung
+                one.setText(wrongAnswers[0].split(";")[language]);
+                two.setText(wrongAnswers[1].split(";")[language]);
+                three.setText(wrongAnswers[2].split(";")[language]);
+                four.setText(question[language]); //Richtige Lösung
                 break;
         }
         if(language == 0)
-            vocabel.setText(question[1]);
-        else vocabel.setText(question[0]);
+            vocable.setText(question[1]);
+        else vocable.setText(question[0]);
 
+    }
+
+    /**
+     * This method repeats the whole word choosing process with a new word
+     */
+    public void nextWord(View view){
         //Enable Buttons
-        eins.setEnabled(true);
-        eins.setHighlightColor(Color.argb(100,1,135,134));
-        zwei.setEnabled(true);
-        zwei.setHighlightColor(Color.argb(100,1,135,134));
-        drei.setEnabled(true);
-        drei.setHighlightColor(Color.argb(100,1,135,134));
-        vier.setEnabled(true);
-        vier.setHighlightColor(Color.argb(100,1,135,134));
+        one.setClickable(true);
+        two.setClickable(true);
+        three.setClickable(true);
+        four.setClickable(true);
+
+        /*
+        one.setBackground(getDrawable(R.drawable.button_style));
+        two.setBackground(getDrawable(R.drawable.button_style));
+        three.setBackground(getDrawable(R.drawable.button_style));
+        four.setBackground(getDrawable(R.drawable.button_style));
+*/
+        allVocabs.add(wrongAnswers[0]);
+        allVocabs.add(wrongAnswers[1]);
+        allVocabs.add(wrongAnswers[2]);
+        allVocabs.add(question[0]+";"+question[1]+";"+question[2]);
+
+        one.setBackgroundColor(Color.argb(100,1,135,134));
+        two.setBackgroundColor(Color.argb(100,1,135,134));
+        three.setBackgroundColor(Color.argb(100,1,135,134));
+        four.setBackgroundColor(Color.argb(100,1,135,134));
+        numOfRounds++;
+        if (counter == numOfRounds) {
+            Log.i("Vocabs","Counter Zero");
+            Log.i("Vocabs","num of Rounds " + numOfRounds);
+            Log.i("Vocabs","+ "+ correct);
+            Log.i("Vocabs","- "+ incorrect);
+
+            Intent b = new Intent(ViewInformation.this, Results.class);
+            b.putExtra("Correct",correct);
+            b.putExtra("Incorrect",incorrect);
+            b.putExtra("Runden", numOfRounds);
+            b.putExtra("Counter", counter);
+
+            File datadirectory = Environment.getExternalStoragePublicDirectory("/VocTrainer/");
+            File datafile = new File(datadirectory, "vocabulary.csv");
+            FileOutputStream fileOutputStream = null;
+            try {
+                fileOutputStream = new FileOutputStream(datafile);
+                String tmp ="";
+                for(int x = 0; x<allVocabs.size(); x++){
+                    tmp += allVocabs.get(x)+"\n";
+                }
+                fileOutputStream.write(tmp.getBytes());
+
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+            startActivity((b));
+
+        }
+        else{
+            chooseWord();
+        }
+
+
     }
 }
+/**
+one.setHighlightColor(Color.argb(100,1,135,134));
+one.setBackgroundColor(Color.argb(100,1,135,134));
+one.getBackground().clearColorFilter();
+one.setBackground(new Button(one.getContext()).getBackground());
+one.setBackgroundResource(android.R.drawable.btn_default);
+
+ one.setBackground(getDrawable(R.drawable.button_style));
+ two.setBackground(getDrawable(R.drawable.button_style));
+ three.setBackground(getDrawable(R.drawable.button_style));
+ four.setBackground(getDrawable(R.drawable.button_style));
+
+ one.getBackground().clearColorFilter();
+ two.getBackground().clearColorFilter();
+ three.getBackground().clearColorFilter();
+ four.getBackground().clearColorFilter();
+
+
+ */

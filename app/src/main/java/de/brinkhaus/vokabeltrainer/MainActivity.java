@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,11 +19,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
  * Main activity of the app.
  */
 public class MainActivity extends AppCompatActivity {
+
     ArrayList<String> allVocabs = new ArrayList<>();
+
 
     /**
      * This method is called when the activity is first created.
@@ -56,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Check if files exist, if not create them
+     * Directory gets created, File gets created.
+     *Line 70: scanner reads the csv file and adds them to "allVocabs"
      */
 
     private void setupVocabs(){
@@ -86,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Environment.openFileOutput(datafile));
                 FileOutputStream fileOutputStream = new FileOutputStream(datafile);
-                fileOutputStream.write("W1;Hello;0\nW2;du;0\nW3;Mensch;0\nW4;zug;0".getBytes());
+                fileOutputStream.write("hello;hallo;0\nyou;du;0\nhuman;Mensch;0\ntrain;zug;0\niron;eisen;0\nfox;fuchs;0\nmobile phone;handy;0\nbucket;eimer;0".getBytes());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
