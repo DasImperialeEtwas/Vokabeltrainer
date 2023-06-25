@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Vokabeltrainer"
         tools:targetApi="31">
         <activity
+            android:name=".InputDataExtern"
+            android:exported="false" />
+        <activity
             android:name=".Results"
             android:exported="false" />
         <activity

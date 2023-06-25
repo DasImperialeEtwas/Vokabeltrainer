@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
@@ -26,13 +24,15 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> allVocabs = new ArrayList<>();
+    private int correct = 0;
+    private int incorrect = 0;
+    private int counter = 3;
+    private int numOfRounds = 0;
 
 
     /**
      * This method is called when the activity is first created.
      */
-    TextView textView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,22 +40,28 @@ public class MainActivity extends AppCompatActivity {
 
         Button start = (Button) findViewById(R.id.start_button);
         Button new_file = (Button) findViewById(R.id.new_file);
-        ImageView picture = (ImageView) findViewById(R.id.picture_start);
 
         setupVocabs();
 
-        /**
+        /*
          * This method directs the user to the trainer.
          * variables get send to ViewInformation
          */
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent a = new Intent(MainActivity.this, ViewInformation.class);
-                a.putExtra("allVocabs",allVocabs);
-                startActivity(a);
-            }
+        start.setOnClickListener(v -> {
+            Intent a = new Intent(MainActivity.this, ViewInformation.class);
+            a.putExtra("allVocabs",allVocabs);
+            startActivity(a);
         });
+
+        /*Intent d = getIntent();
+        correct = d.getExtras().getInt("Correct");
+        incorrect = d.getExtras().getInt("Incorrect");
+        counter = d.getExtras().getInt("Counter");
+        numOfRounds = d.getExtras().getInt("Runden");*/
+    }
+    public void inputFile(View view){
+        Intent aa = new Intent(MainActivity.this, InputDataExtern.class);
+        startActivity(aa);
     }
 
     /**
@@ -88,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
             try {
                 datadirectory.mkdir();
                 datafile.createNewFile();
-
 
                 //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Environment.openFileOutput(datafile));
                 FileOutputStream fileOutputStream = new FileOutputStream(datafile);

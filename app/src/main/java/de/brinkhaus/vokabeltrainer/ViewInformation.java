@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.Intent;
@@ -18,20 +17,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
+/*
  * Main activity of the app.
  */
 
 public class ViewInformation extends AppCompatActivity {
 
-    /**
+    /*
      * This method is called when the activity is first created.
-     *
      * After API 23 the permission request for accessing external storage is changed
      * Before API 23 permission request is asked by the user during installation of app
      * After API 23 permission request is asked at runtime
      * */
-    private int counter = 3;
+    private final int counter = 6;
     private int numOfRounds = 0;
     private int correct = 0;
     private int incorrect = 0;
@@ -59,7 +57,7 @@ public class ViewInformation extends AppCompatActivity {
 
         Intent a = getIntent();
         allVocabs = a.getExtras().getStringArrayList("allVocabs");
-        Log.i("Vocabs",String.valueOf(allVocabs.size()));
+
 
         one = (Button) findViewById(R.id.answer_1);
         two = (Button) findViewById(R.id.answer_2);
@@ -75,7 +73,7 @@ public class ViewInformation extends AppCompatActivity {
      * This method figure out which button holds the correct answer
      * Buttons get disabled to ensure that the answer can´t be changed
      */
-    public void checkForWinner(View view, Button btn){
+    public void checkForWinner(Button btn){
         one.setClickable(false);
         two.setClickable(false);
         three.setClickable(false);
@@ -84,7 +82,7 @@ public class ViewInformation extends AppCompatActivity {
         Button next = findViewById(R.id.next_button);
         next.setVisibility(Button.VISIBLE);
 
-        /**
+        /*
          * This if-loop checks if the correct answer was choosen
          * Buttons change color to "green" if the answer is correct
          * Buttons change color to "red" if the answer is wrong
@@ -121,40 +119,35 @@ public class ViewInformation extends AppCompatActivity {
                 //four.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
             }
         }
-
-        //Restore Changes
-
-        Log.i("Vocab","Restore Done");
     }
 
     /**
      * Those methods ???????????
      */
     public void btn1(View view){
-        checkForWinner(view, one);
+        checkForWinner(one);
     }
     public void btn2(View view){
-        checkForWinner(view, two);
+        checkForWinner(two);
     }
     public void btn3(View view){
-        checkForWinner(view, three);
+        checkForWinner(three);
     }
     public void btn4(View view){
-        checkForWinner(view, four);
+        checkForWinner(four);
     }
 
 
-    /**
+    /*
      * This method creates the
-     * @language gets assigned to language1 or language2 (different languages in each row)
-     * @question splits the arraylist @allVocabs into language1, language2 and category
+     * language gets assigned to language1 or language2 (different languages in each row)
+     * question splits the arraylist @allVocabs into language1, language2 and category
      * the if-loop ??????????
-     * @wrongAnswers ??????????
+     * wrongAnswers ??????????
      */
     public void chooseWord(){
         Button next = findViewById(R.id.next_button);
         next.setVisibility(Button.INVISIBLE);
-
 
         Random random = new Random();
         language = random.nextInt(2);
@@ -178,9 +171,8 @@ public class ViewInformation extends AppCompatActivity {
         }
 
 
-        Log.i("Vocab","hui");
         int correctButton = random.nextInt(4);
-        /**
+        /*
          * The switch method declares which button holds the correct answer
          */
 
@@ -243,11 +235,6 @@ public class ViewInformation extends AppCompatActivity {
         four.setBackgroundColor(Color.argb(100,1,135,134));
         numOfRounds++;
         if (counter == numOfRounds) {
-            Log.i("Vocabs","Counter Zero");
-            Log.i("Vocabs","num of Rounds " + numOfRounds);
-            Log.i("Vocabs","+ "+ correct);
-            Log.i("Vocabs","- "+ incorrect);
-
             Intent b = new Intent(ViewInformation.this, Results.class);
             b.putExtra("Correct",correct);
             b.putExtra("Incorrect",incorrect);
@@ -270,16 +257,11 @@ public class ViewInformation extends AppCompatActivity {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
             startActivity((b));
-
         }
         else{
             chooseWord();
         }
-
-
     }
 }
 /**
@@ -298,6 +280,4 @@ one.setBackgroundResource(android.R.drawable.btn_default);
  two.getBackground().clearColorFilter();
  three.getBackground().clearColorFilter();
  four.getBackground().clearColorFilter();
-
-
  */

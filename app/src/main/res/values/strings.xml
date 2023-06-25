@@ -8,4 +8,14 @@
     <string name="about_text">Der "Vocabeltrainer" ist eine simple App zum leichten erlernen von Vokabeln durch stetige Wiederholung. Sie wurde so erstellt, das sie benutzerfreundlich, intuitiv und leicht zu benutzen ist. </string>
     <string name="next_button">next</string>
     <string name="auswertung">Auswertung der Lernsession:</string>
+    <string name="end_true">Richtig gelöst:</string>
+    <string name="end_false">Falsch gelöst:</string>
+    <string name="end_all">Gesamt gelöst:</string>
+    <string name="new_session">Neue Runde starten</string>
+    <string name="end_back">Zurück zur Startseite</string>
+    <string name="input_anweisung">Gib hier deine Vokabeln ein</string>
+    <string name="input_save">Speichern</string>
+    <string name="input_alternative">Alternativ kannst du ganz leicht mit Exel deine eigene Datei erstellen.Schreibe dazu deine Vokabeln je Sprache in eine Zeile und setze hinter beide Sprache jeweils eine null (Beispiel: Spalte eins: Deutsch, Spalte zwei: Englisch, Spalte drei: 0) Gib dieser Datei den Namen "vocabulary.csv" und lege sie in deinem Laufwert in den Ordner "VocTrainer". Beim Starten der App wird diese Datei dann erkannt und eingelesen.</string>
+    <string name="input_language_2">Sprache 2</string>
+    <string name="input_language_1">Sprache 1</string>
 </resources>
