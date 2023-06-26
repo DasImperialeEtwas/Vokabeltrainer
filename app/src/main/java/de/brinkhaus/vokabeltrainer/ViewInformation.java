@@ -25,9 +25,6 @@ public class ViewInformation extends AppCompatActivity {
 
     /*
      * This method is called when the activity is first created.
-     * After API 23 the permission request for accessing external storage is changed
-     * Before API 23 permission request is asked by the user during installation of app
-     * After API 23 permission request is asked at runtime
      * */
     private final int counter = 6;
     private int numOfRounds = 0;
@@ -230,6 +227,7 @@ public class ViewInformation extends AppCompatActivity {
             b.putExtra("Incorrect",incorrect);
             b.putExtra("Runden", numOfRounds);
             b.putExtra("Counter", counter);
+            b.putExtra("allVocabs", allVocabs);
 
             File datadirectory = Environment.getExternalStoragePublicDirectory("/VocTrainer/");
             File datafile = new File(datadirectory, "vocabulary.csv");

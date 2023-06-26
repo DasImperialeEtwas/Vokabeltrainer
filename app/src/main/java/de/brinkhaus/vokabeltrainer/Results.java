@@ -7,12 +7,15 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class Results extends AppCompatActivity {
 
     private int correct = 0;
     private int incorrect = 0;
     private int counter = 3;
     private int numOfRounds = 0;
+    private ArrayList<String> allVocabs;
 
 
 
@@ -30,17 +33,20 @@ public class Results extends AppCompatActivity {
         incorrect = a.getExtras().getInt("Incorrect");
         counter = a.getExtras().getInt("Counter");
         numOfRounds = a.getExtras().getInt("Runden");
+        allVocabs = a.getExtras().getStringArrayList("allVocabs");
 
         pbFalse.setProgress(0);
         pbRight.setProgress(0);
+        pBAll.setProgress(0);
 
         pbRight.setMax(counter);
         pbFalse.setMax(counter);
-        //pBAll.setMax()
+        pBAll.setMax(allVocabs.size());
 
         pbFalse.setProgress(incorrect);
         pbRight.setProgress(correct);
-
+        int ball = (allVocabs.size()-counter);
+        pBAll.setProgress(ball);
 
     }
     public void newRound(View view){

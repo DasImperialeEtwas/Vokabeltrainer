@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Results">
+    tools:context=".Results"
+    tools:ignore="ExtraText">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
@@ -30,6 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 
+    //Design of the Progressbars and their xmls are inspired and made with a tutorial by www.geeksforgeeks.org
     <ProgressBar
         android:id="@+id/progressBar_right"
         style="@style/CircularDeterminateProgressBar"
@@ -134,5 +136,4 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

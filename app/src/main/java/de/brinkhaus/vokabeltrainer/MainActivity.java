@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-/**
+/*
  * Main activity of the app.
  */
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> allVocabs = new ArrayList<>();
     private int correct = 0;
     private int incorrect = 0;
-    private int counter = 3;
+    private int counter = 16;
     private int numOfRounds = 0;
 
 
@@ -70,12 +70,7 @@ public class MainActivity extends AppCompatActivity {
         numOfRounds = d.getExtras().getInt("Runden");*/
     }
 
-    public void inputFile(View view){
-        Intent aa = new Intent(MainActivity.this, InputDataExtern.class);
-        startActivity(aa);
-    }
-
-    /**
+    /*
      * Check if files exist, if not create them
      * Directory gets created, File gets created.
      *Line 70: scanner reads the csv file and adds them to "allVocabs"
@@ -108,15 +103,24 @@ public class MainActivity extends AppCompatActivity {
 
                 //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Environment.openFileOutput(datafile));
                 FileOutputStream fileOutputStream = new FileOutputStream(datafile);
-                fileOutputStream.write("hello;hallo;0\nyou;du;0\nhuman;Mensch;0\ntrain;zug;0\niron;eisen;0\nfox;fuchs;0\nmobile phone;handy;0\nbucket;eimer;0".getBytes());
+                fileOutputStream.write(("hello;hallo;0\nyou;du;0\nhuman;Mensch;0\ntrain;zug;0\n" +
+                        "iron;eisen;0\nfox;fuchs;0\nmobile phone;handy;0\nbucket;eimer;0\npillow;" +
+                        "kissen;0\nwindow;fenster;0\nbear;Bär;0\ncandle;Kerze;0\nnitron;Nitrat;0\ntablet;" +
+                        "Tablet;0\nrunning;rennen;0\nwalking;laufen;0").getBytes());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
 
+    public void inputFile(View view){
+        Intent aa = new Intent(MainActivity.this, InputDataExtern.class);
+        startActivity(aa);
+    }
+
     /*
      * Menu gets created and linked to the about page
+     * Build with the help of a Tutorial by www.riptutorial.com
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

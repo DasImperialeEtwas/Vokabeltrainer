@@ -9,13 +9,14 @@
     <TextView
         android:id="@+id/versionName"
         android:layout_width="269dp"
-        android:layout_height="144dp"
-        android:layout_marginBottom="465dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginBottom="33dp"
         android:text="@string/about_text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutMe" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/aboutMe"
@@ -29,5 +30,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="354dp"
+        android:onClick="back"
+        android:text="@string/end_back"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/versionName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
