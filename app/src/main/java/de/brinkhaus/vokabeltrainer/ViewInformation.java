@@ -58,7 +58,6 @@ public class ViewInformation extends AppCompatActivity {
         Intent a = getIntent();
         allVocabs = a.getExtras().getStringArrayList("allVocabs");
 
-
         one = (Button) findViewById(R.id.answer_1);
         two = (Button) findViewById(R.id.answer_2);
         three = (Button) findViewById(R.id.answer_3);
@@ -69,7 +68,7 @@ public class ViewInformation extends AppCompatActivity {
         chooseWord();
     }
 
-    /**
+    /*
      * This method figure out which button holds the correct answer
      * Buttons get disabled to ensure that the answer can´t be changed
      */
@@ -89,6 +88,7 @@ public class ViewInformation extends AppCompatActivity {
          */
         if (btn.getText().equals(question[language])){
             //True
+            //btn.setBackgroundResource(R.drawable.button_style); Button wird eckig und wird nicht grün
             btn.setBackgroundColor(Color.argb(100,0,255,0));
             question[2] = String.valueOf(Integer.parseInt(question[2]) +1);
             correct++;
