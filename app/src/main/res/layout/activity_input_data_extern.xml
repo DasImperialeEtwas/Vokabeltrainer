@@ -62,23 +62,25 @@
             android:id="@+id/language1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="9dp"
             android:ems="10"
             android:inputType="text"
             android:minHeight="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/input_language_1" />
+            android:text="@string/input_language_1"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="96dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="9dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="157dp"
+            android:layout_marginBottom="18dp"
             app:layout_constraintBottom_toTopOf="@+id/language2"
+            app:layout_constraintEnd_toStartOf="@+id/submit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/language1"
             app:srcCompat="@drawable/refresh_icon" />
@@ -87,15 +89,13 @@
             android:id="@+id/language2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="9dp"
             android:ems="10"
             android:inputType="text"
             android:minHeight="48dp"
             android:text="@string/input_language_2"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
 
         <Button
             android:id="@+id/submit"

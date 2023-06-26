@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private int numOfRounds = 0;
 
 
-    /**
+    /*
      * This method is called when the activity is first created.
      */
     @Override
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         counter = d.getExtras().getInt("Counter");
         numOfRounds = d.getExtras().getInt("Runden");*/
     }
+
     public void inputFile(View view){
         Intent aa = new Intent(MainActivity.this, InputDataExtern.class);
         startActivity(aa);
@@ -108,6 +112,28 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    /*
+     * Menu gets created and linked to the about page
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about_menu:
+                Intent about = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(about);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

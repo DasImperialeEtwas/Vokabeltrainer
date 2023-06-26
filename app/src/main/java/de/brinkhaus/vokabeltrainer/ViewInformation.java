@@ -68,6 +68,9 @@ public class ViewInformation extends AppCompatActivity {
         chooseWord();
     }
 
+    //Color variable gets declared
+    public static final int TEAL = (Color.parseColor("#ff018786"));
+
     /*
      * This method figure out which button holds the correct answer
      * Buttons get disabled to ensure that the answer can´t be changed
@@ -88,41 +91,34 @@ public class ViewInformation extends AppCompatActivity {
          */
         if (btn.getText().equals(question[language])){
             //True
-            //btn.setBackgroundResource(R.drawable.button_style); Button wird eckig und wird nicht grün
-            btn.setBackgroundColor(Color.argb(100,0,255,0));
+            btn.setBackgroundColor(Color.GREEN);
             question[2] = String.valueOf(Integer.parseInt(question[2]) +1);
             correct++;
         }
         else{
             //Wrong
             question[2] = "0";
-            btn.setBackgroundColor(Color.argb(100,255,0,0));
+            btn.setBackgroundColor(Color.RED);
             incorrect++;
 
             if(one.getText().equals(question[language])){
-                one.setBackgroundColor(Color.argb(100,0,255,0));
-                //one.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                one.setBackgroundColor(Color.GREEN);
             }
             if(two.getText().equals(question[language])){
-                two.setBackgroundColor(Color.argb(100,0,255,0));
-                //two.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                two.setBackgroundColor(Color.GREEN);
             }
             if(three.getText().equals(question[language])){
-                four.setBackgroundColor(Color.argb(100,0,255,0));
-                //three.setBackgroundColor(Color.argb(100,255,0,0));
-                //three.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                four.setBackgroundColor(Color.GREEN);
             }
 
             if(four.getText().equals(question[language])){
-                four.setBackgroundColor(Color.argb(100,0,255,0));
-                //four.setBackgroundColor(Color.argb(100,255,0,0));
-                //four.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                four.setBackgroundColor(Color.GREEN);
             }
         }
     }
 
-    /**
-     * Those methods ???????????
+    /*
+     * Those methods take action when one of the buttons is pressed. They start the checking process of the answers
      */
     public void btn1(View view){
         checkForWinner(one);
@@ -170,7 +166,6 @@ public class ViewInformation extends AppCompatActivity {
             allVocabs.remove(tmp);
         }
 
-
         int correctButton = random.nextInt(4);
         /*
          * The switch method declares which button holds the correct answer
@@ -202,14 +197,14 @@ public class ViewInformation extends AppCompatActivity {
                 four.setText(question[language]); //Richtige Lösung
                 break;
         }
-        if(language == 0)
+        if(language == 0) {
             vocable.setText(question[1]);
-        else vocable.setText(question[0]);
-
+        } else vocable.setText(question[0]);
     }
 
-    /**
+    /*
      * This method repeats the whole word choosing process with a new word
+     * onClick listener for the next button
      */
     public void nextWord(View view){
         //Enable Buttons
@@ -218,21 +213,16 @@ public class ViewInformation extends AppCompatActivity {
         three.setClickable(true);
         four.setClickable(true);
 
-        /*
-        one.setBackground(getDrawable(R.drawable.button_style));
-        two.setBackground(getDrawable(R.drawable.button_style));
-        three.setBackground(getDrawable(R.drawable.button_style));
-        four.setBackground(getDrawable(R.drawable.button_style));
-*/
         allVocabs.add(wrongAnswers[0]);
         allVocabs.add(wrongAnswers[1]);
         allVocabs.add(wrongAnswers[2]);
         allVocabs.add(question[0]+";"+question[1]+";"+question[2]);
 
-        one.setBackgroundColor(Color.argb(100,1,135,134));
-        two.setBackgroundColor(Color.argb(100,1,135,134));
-        three.setBackgroundColor(Color.argb(100,1,135,134));
-        four.setBackgroundColor(Color.argb(100,1,135,134));
+        one.setBackgroundColor(TEAL);
+        two.setBackgroundColor(TEAL);
+        three.setBackgroundColor(TEAL);
+        four.setBackgroundColor(TEAL);
+
         numOfRounds++;
         if (counter == numOfRounds) {
             Intent b = new Intent(ViewInformation.this, Results.class);
@@ -259,25 +249,9 @@ public class ViewInformation extends AppCompatActivity {
             }
             startActivity((b));
         }
-        else{
+        else
+        {
             chooseWord();
         }
     }
 }
-/**
-one.setHighlightColor(Color.argb(100,1,135,134));
-one.setBackgroundColor(Color.argb(100,1,135,134));
-one.getBackground().clearColorFilter();
-one.setBackground(new Button(one.getContext()).getBackground());
-one.setBackgroundResource(android.R.drawable.btn_default);
-
- one.setBackground(getDrawable(R.drawable.button_style));
- two.setBackground(getDrawable(R.drawable.button_style));
- three.setBackground(getDrawable(R.drawable.button_style));
- four.setBackground(getDrawable(R.drawable.button_style));
-
- one.getBackground().clearColorFilter();
- two.getBackground().clearColorFilter();
- three.getBackground().clearColorFilter();
- four.getBackground().clearColorFilter();
- */
