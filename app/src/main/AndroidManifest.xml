@@ -20,13 +20,13 @@
             android:name=".InputDataExtern"
             android:exported="false" />
         <activity
-            android:name=".Results"
+            android:name=".ResultsActivity"
             android:exported="false" />
         <activity
             android:name=".AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewInformation"
+            android:name=".TrainingActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,17 +1,16 @@
 package de.brinkhaus.vokabeltrainer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.content.Intent;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import java.util.Random;
  * Main activity of the app.
  */
 
-public class ViewInformation extends AppCompatActivity {
+public class TrainingActivity extends AppCompatActivity {
 
     /*
      * This method is called when the activity is first created.
@@ -44,10 +43,10 @@ public class ViewInformation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_information);
+        setContentView(R.layout.activity_training);
 
         /*
-         * Variables arrive in ViewInformation
+         * Variables arrive in TrainingActivity
          * Buttons get declared
          * other variables get declared
          */
@@ -56,13 +55,13 @@ public class ViewInformation extends AppCompatActivity {
         allVocabs = a.getExtras().getStringArrayList("allVocabs");
         counter = a.getExtras().getInt("counter");
 
-        one = (Button) findViewById(R.id.answer_1);
-        two = (Button) findViewById(R.id.answer_2);
-        three = (Button) findViewById(R.id.answer_3);
-        four = (Button) findViewById(R.id.answer_4);
+        one = findViewById(R.id.answer_1);
+        two = findViewById(R.id.answer_2);
+        three = findViewById(R.id.answer_3);
+        four = findViewById(R.id.answer_4);
 
-        vocable = (TextView) findViewById(R.id.vocabel);
-        instruction = (TextView) findViewById(R.id.anweisung);
+        vocable = findViewById(R.id.vocabel);
+        instruction = findViewById(R.id.anweisung);
         chooseWord();
     }
 
@@ -106,7 +105,7 @@ public class ViewInformation extends AppCompatActivity {
                 two.setBackgroundColor(Color.GREEN);
             }
             if(three.getText().equals(question[language])){
-                four.setBackgroundColor(Color.GREEN);
+                three.setBackgroundColor(Color.GREEN);
             }
 
             if(four.getText().equals(question[language])){
@@ -222,7 +221,7 @@ public class ViewInformation extends AppCompatActivity {
 
         numOfRounds++;
         if (counter == numOfRounds) {
-            Intent b = new Intent(ViewInformation.this, Results.class);
+            Intent b = new Intent(TrainingActivity.this, ResultsActivity.class);
             b.putExtra("Correct",correct);
             b.putExtra("Incorrect",incorrect);
             b.putExtra("Runden", numOfRounds);
@@ -234,14 +233,12 @@ public class ViewInformation extends AppCompatActivity {
             FileOutputStream fileOutputStream = null;
             try {
                 fileOutputStream = new FileOutputStream(datafile);
-                String tmp ="";
+                StringBuilder tmp = new StringBuilder();
                 for(int x = 0; x<allVocabs.size(); x++){
-                    tmp += allVocabs.get(x)+"\n";
+                    tmp.append(allVocabs.get(x)).append("\n");
                 }
-                fileOutputStream.write(tmp.getBytes());
+                fileOutputStream.write(tmp.toString().getBytes());
 
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

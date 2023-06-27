@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Results"
+    tools:context=".ResultsActivity"
     tools:ignore="ExtraText">
 
     <androidx.appcompat.widget.Toolbar
@@ -25,9 +25,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="177dp"
         android:text="@string/auswertung"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 
@@ -41,11 +43,13 @@
         android:layout_height="69dp"
         android:layout_marginStart="43dp"
         android:layout_marginTop="64dp"
+        android:layout_marginBottom="6dp"
         android:indeterminateOnly="false"
         android:max="100"
         android:progress="60"
         android:progressDrawable="@drawable/circle"
         android:rotation="0"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:progress="60" />
@@ -55,6 +59,7 @@
         style="@style/CircularDeterminateProgressBar"
         android:layout_width="69dp"
         android:layout_height="69dp"
+        android:layout_marginStart="187dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="43dp"
         android:layout_marginBottom="6dp"
@@ -65,6 +70,7 @@
         android:rotation="0"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progressBar_right"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
         tools:progress="60" />
 
@@ -76,6 +82,7 @@
         android:layout_marginStart="47dp"
         android:layout_marginTop="133dp"
         android:layout_marginEnd="51dp"
+        android:layout_marginBottom="6dp"
         android:indeterminateOnly="false"
         android:max="100"
         android:progress="60"
@@ -113,7 +120,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="104dp"
         android:text="@string/end_all"
+        app:layout_constraintBottom_toTopOf="@+id/new_round"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -122,11 +133,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="215dp"
         android:layout_marginBottom="271dp"
         android:onClick="newRound"
         android:text="@string/new_session"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

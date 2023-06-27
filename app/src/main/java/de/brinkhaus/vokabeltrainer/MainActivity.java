@@ -1,22 +1,15 @@
 package de.brinkhaus.vokabeltrainer;
 
-import static android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION;
-
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
@@ -27,18 +20,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 /*
  * Main activity of the app.
  */
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> allVocabs = new ArrayList<>();
-    private int correct = 0;
-    private int incorrect = 0;
-    private int counter = 16;
-    private int numOfRounds = 0;
-
+    private final int counter = 6;
 
     /*
      * This method is called when the activity is first created.
@@ -48,27 +36,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button start = (Button) findViewById(R.id.start_button);
-        Button new_file = (Button) findViewById(R.id.new_file);
+        Button start = findViewById(R.id.start_button);
 
         setupVocabs();
 
         /*
          * This method directs the user to the trainer.
-         * variables get send to ViewInformation
+         * variables get send to TrainingActivity
          */
         start.setOnClickListener(v -> {
-            Intent a = new Intent(MainActivity.this, ViewInformation.class);
+            Intent a = new Intent(MainActivity.this, TrainingActivity.class);
             a.putExtra("allVocabs",allVocabs);
             a.putExtra("counter", counter);
             startActivity(a);
         });
-
-        /*Intent d = getIntent();
-        correct = d.getExtras().getInt("Correct");
-        incorrect = d.getExtras().getInt("Incorrect");
-        counter = d.getExtras().getInt("Counter");
-        numOfRounds = d.getExtras().getInt("Runden");*/
     }
 
     /*
@@ -104,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Environment.openFileOutput(datafile));
                 FileOutputStream fileOutputStream = new FileOutputStream(datafile);
-                fileOutputStream.write(("cerca de;zirka;0\ncada ;jeders;0\nandaluz ;andalusisch;0\ncausar algo ;etw. verursachen;0\n " +
+                fileOutputStream.write(("cerca de;zirka;0\ncada ;jeders;0\nandaluz ;andalusisch;0\ncausar algo ;etw. verursachen;0\n" +
                         "el medio ambiente;die Umwelt;0\nel pasado;die Vergangenheit;0\nel/la periodista ;Journalist/in;0\nsostenible ;nachhaltig;0\n " +
                         "la situacion ;die Situation;0\npor suerte ;zum Glück;0\nen aquel entonces ;damals;0\nla costa ;die Küste;0\n" +
                         "la solución ;die Lösung;0\nel conflicto ;der Konflikt;0\nprimero ;erstens;0\n " +
@@ -124,10 +105,6 @@ public class MainActivity extends AppCompatActivity {
     /*
      * Menu gets created and linked to the about page
      * Build with the help of a Tutorial by www.riptutorial.com
-     * hello;hallo;0\nyou;du;0\nhuman;Mensch;0\ntrain;zug;0\n" +
-                        "iron;eisen;0\nfox;fuchs;0\nmobile phone;handy;0\nbucket;eimer;0\npillow;" +
-                        "kissen;0\nwindow;fenster;0\nbear;Bär;0\ncandle;Kerze;0\nnitron;Nitrat;0\ntablet;" +
-                        "Tablet;0\nrunning;rennen;0\nwalking;laufen;0
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -138,14 +115,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.about_menu:
-                Intent about = new Intent(MainActivity.this, AboutActivity.class);
-                startActivity(about);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.about_menu) {
+            Intent about = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(about);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
