@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +38,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button start = findViewById(R.id.start_button);
+        final ProgressBar pbRight = findViewById(R.id.progressBar_right);
+        final ProgressBar pbFalse = findViewById(R.id.progressBar_false);
+        final ProgressBar pBAll = findViewById(R.id.progressBar_all);
+
+        pbFalse.setProgress(0);
+        pbRight.setProgress(0);
+        pBAll.setProgress(0);
+
+        pbRight.setMax(counter);
+        pbFalse.setMax(counter);
+        pBAll.setMax(21);
+        pbFalse.setProgress(2);
+        pbRight.setProgress(4);
+        pBAll.setProgress(counter);
 
         setupVocabs();
 

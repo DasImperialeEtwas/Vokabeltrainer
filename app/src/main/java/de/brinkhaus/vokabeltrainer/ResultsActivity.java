@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ResultsActivity extends AppCompatActivity {
     int numOfRounds;
+    ArrayList<String> allVocabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class ResultsActivity extends AppCompatActivity {
         int incorrect = a.getExtras().getInt("Incorrect");
         int counter = a.getExtras().getInt("Counter");
         numOfRounds = a.getExtras().getInt("Runden");
-        ArrayList<String> allVocabs = a.getExtras().getStringArrayList("allVocabs");
+        allVocabs = a.getExtras().getStringArrayList("allVocabs");
 
         pbFalse.setProgress(0);
         pbRight.setProgress(0);
