@@ -17,14 +17,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /*
- * Main activity of the app.
+ * Training activity of the app.
  */
 
 public class TrainingActivity extends AppCompatActivity {
 
     /*
      * This method is called when the activity is first created.
-     * */
+     */
     private int counter;
     private int numOfRounds = 0;
     private int correct = 0;

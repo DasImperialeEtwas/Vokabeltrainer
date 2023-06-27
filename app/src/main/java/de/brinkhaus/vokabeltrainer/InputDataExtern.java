@@ -13,7 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /*
- * Main activity of the app.
+ * Datainput activity of the app.
  */
 
 public class InputDataExtern extends AppCompatActivity {

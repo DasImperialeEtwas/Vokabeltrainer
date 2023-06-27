@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 datadirectory.mkdir();
                 datafile.createNewFile();
 
-                //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Environment.openFileOutput(datafile));
                 FileOutputStream fileOutputStream = new FileOutputStream(datafile);
                 fileOutputStream.write(("cerca de;zirka;0\ncada ;jeders;0\nandaluz ;andalusisch;0\ncausar algo ;etw. verursachen;0\n" +
                         "el medio ambiente;die Umwelt;0\nel pasado;die Vergangenheit;0\nel/la periodista ;Journalist/in;0\nsostenible ;nachhaltig;0\n " +

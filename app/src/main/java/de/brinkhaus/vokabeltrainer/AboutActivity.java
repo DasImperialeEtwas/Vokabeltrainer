@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 /*
- * This activity shows the about information.
+ * About activity of the app.
  */
 public class AboutActivity extends AppCompatActivity {
 

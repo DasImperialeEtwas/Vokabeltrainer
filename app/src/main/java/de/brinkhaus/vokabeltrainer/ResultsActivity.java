@@ -8,8 +8,14 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+/*
+ * Results activity of the app.
+ */
 
 public class ResultsActivity extends AppCompatActivity {
+    /*
+     * This method is called when the activity is first created.
+     */
     int numOfRounds;
     ArrayList<String> allVocabs;
 
