@@ -45,7 +45,8 @@ public class Results extends AppCompatActivity {
 
         pbFalse.setProgress(incorrect);
         pbRight.setProgress(correct);
-        int ball = (allVocabs.size()-counter);
+        int zahl =allVocabs.size();
+        int ball = zahl-counter;
         pBAll.setProgress(ball);
 
     }
@@ -59,10 +60,7 @@ public class Results extends AppCompatActivity {
 
     public void backStart(View view){
         Intent d = new Intent(Results.this, MainActivity.class);
-        d.putExtra("Correct",correct);
-        d.putExtra("Incorrect",incorrect);
-        d.putExtra("Runden", numOfRounds);
-        d.putExtra("Counter", counter);
+
         startActivity(d);
     }
 }

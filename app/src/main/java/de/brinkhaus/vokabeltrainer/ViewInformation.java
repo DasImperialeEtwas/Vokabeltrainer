@@ -26,7 +26,7 @@ public class ViewInformation extends AppCompatActivity {
     /*
      * This method is called when the activity is first created.
      * */
-    private final int counter = 6;
+    private int counter;
     private int numOfRounds = 0;
     private int correct = 0;
     private int incorrect = 0;
@@ -54,6 +54,7 @@ public class ViewInformation extends AppCompatActivity {
 
         Intent a = getIntent();
         allVocabs = a.getExtras().getStringArrayList("allVocabs");
+        counter = a.getExtras().getInt("counter");
 
         one = (Button) findViewById(R.id.answer_1);
         two = (Button) findViewById(R.id.answer_2);
@@ -135,8 +136,7 @@ public class ViewInformation extends AppCompatActivity {
      * This method creates the
      * language gets assigned to language1 or language2 (different languages in each row)
      * question splits the arraylist @allVocabs into language1, language2 and category
-     * the if-loop ??????????
-     * wrongAnswers ??????????
+     * the while loop selects a random word
      */
     public void chooseWord(){
         Button next = findViewById(R.id.next_button);

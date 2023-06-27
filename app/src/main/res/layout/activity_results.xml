@@ -31,22 +31,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 
-    //Design of the Progressbars and their xmls are inspired and made with a tutorial by www.geeksforgeeks.org
+    //Design of the Progressbars and their xmls are inspired and made with a tutorial by
+    www.geeksforgeeks.org
+
     <ProgressBar
         android:id="@+id/progressBar_right"
         style="@style/CircularDeterminateProgressBar"
         android:layout_width="69dp"
         android:layout_height="69dp"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="43dp"
         android:layout_marginTop="64dp"
-        android:max="100"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
         android:indeterminateOnly="false"
+        android:max="100"
         android:progress="60"
         android:progressDrawable="@drawable/circle"
         android:rotation="0"
-        tools:progress="60"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:progress="60" />
 
     <ProgressBar
         android:id="@+id/progressBar_false"
@@ -54,12 +56,14 @@
         android:layout_width="69dp"
         android:layout_height="69dp"
         android:layout_marginTop="96dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="6dp"
         android:indeterminateOnly="false"
         android:max="100"
         android:progress="60"
         android:progressDrawable="@drawable/circle"
         android:rotation="0"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
         tools:progress="60" />
@@ -69,27 +73,28 @@
         style="@style/CircularDeterminateProgressBar"
         android:layout_width="69dp"
         android:layout_height="69dp"
-        android:layout_marginStart="59dp"
+        android:layout_marginStart="47dp"
         android:layout_marginTop="133dp"
-        android:layout_marginEnd="59dp"
-        android:max="100"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginEnd="51dp"
         android:indeterminateOnly="false"
+        android:max="100"
         android:progress="60"
         android:progressDrawable="@drawable/circle"
         android:rotation="0"
-        tools:progress="60"/>
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:progress="60" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="6dp"
         android:text="@string/end_true"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_right"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar_right" />
 
     <TextView
@@ -97,43 +102,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="34dp"
         android:text="@string/end_false"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_false"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar_false" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginEnd="159dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="44dp"
         android:text="@string/end_all"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar_all" />
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/new_round"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="271dp"
         android:onClick="newRound"
         android:text="@string/new_session"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/back_to_start"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/back_to_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="27dp"
-        android:layout_marginBottom="209dp"
         android:onClick="backStart"
         android:text="@string/end_back"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_round" />
 </androidx.constraintlayout.widget.ConstraintLayout>

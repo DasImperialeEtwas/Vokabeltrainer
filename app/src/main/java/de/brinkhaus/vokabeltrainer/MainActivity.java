@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         start.setOnClickListener(v -> {
             Intent a = new Intent(MainActivity.this, ViewInformation.class);
             a.putExtra("allVocabs",allVocabs);
+            a.putExtra("counter", counter);
             startActivity(a);
         });
 
@@ -103,10 +104,12 @@ public class MainActivity extends AppCompatActivity {
 
                 //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Environment.openFileOutput(datafile));
                 FileOutputStream fileOutputStream = new FileOutputStream(datafile);
-                fileOutputStream.write(("hello;hallo;0\nyou;du;0\nhuman;Mensch;0\ntrain;zug;0\n" +
-                        "iron;eisen;0\nfox;fuchs;0\nmobile phone;handy;0\nbucket;eimer;0\npillow;" +
-                        "kissen;0\nwindow;fenster;0\nbear;Bär;0\ncandle;Kerze;0\nnitron;Nitrat;0\ntablet;" +
-                        "Tablet;0\nrunning;rennen;0\nwalking;laufen;0").getBytes());
+                fileOutputStream.write(("cerca de;zirka;0\ncada ;jeders;0\nandaluz ;andalusisch;0\ncausar algo ;etw. verursachen;0\n " +
+                        "el medio ambiente;die Umwelt;0\nel pasado;die Vergangenheit;0\nel/la periodista ;Journalist/in;0\nsostenible ;nachhaltig;0\n " +
+                        "la situacion ;die Situation;0\npor suerte ;zum Glück;0\nen aquel entonces ;damals;0\nla costa ;die Küste;0\n" +
+                        "la solución ;die Lösung;0\nel conflicto ;der Konflikt;0\nprimero ;erstens;0\n " +
+                        "intentar ;versuchen;0\nla basura ;der Müll;0\nreciclar algo ;etw. recyceln;0\n " +
+                        "la toalla ;Handtuch;0\nahorra ;sparen;0\nintentar ;versuchen;0\nprimero ;erstens;0").getBytes());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -121,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
     /*
      * Menu gets created and linked to the about page
      * Build with the help of a Tutorial by www.riptutorial.com
+     * hello;hallo;0\nyou;du;0\nhuman;Mensch;0\ntrain;zug;0\n" +
+                        "iron;eisen;0\nfox;fuchs;0\nmobile phone;handy;0\nbucket;eimer;0\npillow;" +
+                        "kissen;0\nwindow;fenster;0\nbear;Bär;0\ncandle;Kerze;0\nnitron;Nitrat;0\ntablet;" +
+                        "Tablet;0\nrunning;rennen;0\nwalking;laufen;0
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,5 +146,11 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onResume() {
+        setupVocabs();
+        super.onResume();
     }
 }
