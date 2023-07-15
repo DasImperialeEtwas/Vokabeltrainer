@@ -9,3 +9,5 @@ The vocabulary trainer is based on a simple principle:
 
 Another nice feature is the visual feedback you get at the end of your practice run. You can see how many words you 
 You can see how many words you have solved correctly and incorrectly and how many words you have practiced in total.
+
+![grafik](https://github.com/DasImperialeEtwas/Vokabeltrainer/assets/131361640/ba14d5f4-194a-4506-a33b-615dbe7ccc9a)
